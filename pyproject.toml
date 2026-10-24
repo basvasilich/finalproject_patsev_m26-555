@@ -1,0 +1,35 @@
+[project]
+name = "finalproject_patsev_m26-555"
+version = "0.1.0"
+description = "ValutaTrade Hub"
+readme = "README.md"
+authors = [{name = "Vadim Patsev", email = "363312+basvasilich@users.noreply.github.com"}]
+requires-python = ">=3.12"
+dependencies = ["prettytable>=3.12,<4", "requests>=2.32,<3"]
+
+[project.scripts]
+valutatrade = "valutatrade_hub.cli.interface:main"
+
+[dependency-groups]
+dev = ["ruff>=0.14,<1"]
+
+[build-system]
+requires = ["uv_build>=0.12,<0.13"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "valutatrade_hub"
+module-root = ""
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.valutatrade]
+DATA_DIR = "data/local"
+LOG_DIR = "logs"
+RATES_TTL_SECONDS = 300
+BASE_CURRENCY = "USD"
+LOG_LEVEL = "INFO"
+LOG_FORMAT = "%(asctime)s %(levelname)s %(message)s"
+LOG_MAX_BYTES = 1048576
+LOG_BACKUP_COUNT = 3
